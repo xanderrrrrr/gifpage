@@ -36,8 +36,20 @@ function displayStuff() {
 
                 // Creating and storing an image tag
                 var athleteImage = $("<img>");
-                // Setting the src attribute of the image to a property pulled off the result item
-                athleteImage.attr("src", results[i].images.fixed_height.url);
+                // Setting the src attribute of the image to a property pulled off the result item for STILL
+                athleteImage.attr("src", results[i].images.fixed_height_still.url);
+
+                // Setting the still attribute of the image so I can get it again in the function down where I switch back and forth
+                athleteImage.attr("data-still", results[i].images.fixed_height_still.url);
+
+                // steting the data state to still initially
+                athleteImage.attr("data-state", "still");
+
+                // adding a class of gif
+                athleteImage.attr("class", "gif");
+
+                // Setting the data-animate attribute of the image to a property pulled off the result item for ANIMATE
+                athleteImage.attr("data-animate", results[i].images.fixed_height.url);
 
                 // Appending the paragraph and image tag to the athleteDiv
                 athleteDiv.append(p);
@@ -78,17 +90,34 @@ $("#add-athlete").on("click", function (event) {
     // This line grabs the input from the textbox
     var athlete = $("#user-input").val().trim();
 
-    // Adding movie from the textbox to our array
+    // Adding athlete from the textbox to our array
     topics.push(athlete);
 
-    // Calling renderButtons which handles the processing of our movie array
+    // Calling renderButtons which handles the processing of our athlete array
     renderButtons();
     console.log(topics);
 });
 
+function animate() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+};
+
+// adding a click listener to run the function animate
+$(document).on("click", ".gif", animate)
 
 
-// Adding a click event listener to all elements with a class of "movie-btn"
+// Adding a click event listener to all elements with a class of "athlete"
 $(document).on("click", ".athlete", displayStuff);
 
 // rendering our buttons
