@@ -50,3 +50,7 @@ table {
 body { 
     background: url(images/sports.png); 
 }
+
+.btn {
+	margin-bottom: 10px;
+}
