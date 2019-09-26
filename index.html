@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            gifpage
-        </title>
-    </head>
-    <body>
-        <div class="container">
-            <div id="buttons"></div>
-            <form id="user-form">
-                    <label for="user-input">Add an athlete</label>
-                    <input type="text" id="user-input"><br>
-              
-                    <!-- Button triggers new thing to be added -->
-                    <input id="add-athlete" type="submit" value="Submit">
-                  </form>
-            <div id="images-go-here"></div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="app.js"></script>
-    </body>
+
+<head>
+    <title>
+        gifpage
+    </title>
+    <!-- Here's a link to the actual stylesheet -->
+    <link rel="stylesheet" href="reset.css">
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div id="buttons"></div>
+        <form id="user-form">
+            <label for="user-input">Add an athlete</label>
+            <input type="text" id="user-input"><br>
+
+            <!-- Button triggers new thing to be added -->
+            <input id="add-athlete" type="submit" value="Submit" class="btn btn-primary">
+        </form>
+        <div id="images-go-here"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
 </html>
